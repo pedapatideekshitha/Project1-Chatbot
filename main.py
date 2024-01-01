@@ -42,12 +42,11 @@ def check_all_messages(message, chatbot):
     response('Hello! How can I assist you today?', ['hello', 'hi', 'hey', 'sup', 'heyo'], single_response=True)
     response('Goodbye! Feel free to return if you have more questions.', ['bye', 'goodbye'], single_response=True)
 
-    # Previous Context
+    
     previous_question = chatbot.get_memory('previous_question')
     if previous_question:
         response(f"You previously asked me about {previous_question}. How can I help you now?", [previous_question.lower()])
 
-    # Basic Questions
     response('I\'m doing fine, and you?', ['how', 'are', 'you', 'doing'], required_words=['how'])
     response('You\'re welcome!', ['thank', 'thanks'], single_response=True)
     response('Thank you!', ['i', 'love', 'code', 'palace'], required_words=['code', 'palace'])
@@ -66,7 +65,6 @@ def ask_user_questions(chatbot):
         user_response = input('You: ')
 
     print('Bot: Goodbye! Feel free to return if you have more questions.')
-
 
 def get_response(user_input, chatbot):
     split_message = re.split(r'\s+|[,;?!.-]\s*', user_input.lower())
